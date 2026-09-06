@@ -46,161 +46,124 @@ Used to retrieve records from a table.
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
-
-![image](https://github.com/user-attachments/assets/3fb5b196-fd57-4e9c-8d03-4e445dacb453)
-
+--
+-- Paste Question 1 here
 
 ```sql
-UPDATE products
-SET product_name = 'Grapefruit'
-WHERE product_id = 4;
+-- Paste your SQL code below for Question 1
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/450e752a-8c92-4174-94ef-f60a21dce154)
-
+![Output1](output.png)
 
 **Question 2**
-
-![image](https://github.com/user-attachments/assets/58478acf-17ff-41bf-805b-a990e525e4a8)
-
+---
+-- Paste Question 2 here
 
 ```sql
-UPDATE employees
-SET salary = salary * 2
-WHERE department_id = 20
-  AND job_id LIKE '%MAN';
+-- Paste your SQL code below for Question 2
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/cd7d0fc7-ea44-4d43-aae0-0d8f5c592dde)
+![Output2](output.png)
 
 **Question 3**
-
-![image](https://github.com/user-attachments/assets/a5cc9cd3-1df5-443d-b76b-55953b47d747)
-
+---
+-- Paste Question 3 here
 
 ```sql
-UPDATE SALES
-SET sell_price = sell_price + 3
-WHERE product_id IN (
-    SELECT product_id 
-    FROM PRODUCTS 
-    WHERE supplier_id = 4
-);
+-- Paste your SQL code below for Question 3
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/4154d858-e973-4537-aa69-9f77dcad49e9)
-
+![Output3](output.png)
 
 **Question 4**
-
-![image](https://github.com/user-attachments/assets/aa005081-072e-4412-8adb-6f500afeb345)
-
+---
+-- Paste Question 4 here
 
 ```sql
-UPDATE sales
-SET total_sell_price = quantity * sell_price
-WHERE product_id = 10;
+-- Paste your SQL code below for Question 4
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/a8ddecbd-e86a-480f-b302-3c8e0bdec3a5)
-
+![Output4](output.png)
 
 **Question 5**
-
-![image](https://github.com/user-attachments/assets/4851b1e3-8122-4449-85f2-a87cf346ca0a)
-
+---
+-- Paste Question 5 here
 
 ```sql
-UPDATE employees
-SET email = 'Unavailable';
+-- Paste your SQL code below for Question 5
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/61fe882b-be3b-4d18-9d74-055e18806cbe)
-
+![Output5](output.png)
 
 **Question 6**
-
-![image](https://github.com/user-attachments/assets/cf249de4-51d1-4571-b684-3cbcabf18f1e)
-
+---
+-- Paste Question 6 here
 
 ```sql
-DELETE FROM customer
-WHERE GRADE = 2;
+-- Paste your SQL code below for Question 6
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/b3b16aa3-a2d2-4974-9955-ed1a57cd9156)
+![Output6](output.png)
 
 **Question 7**
-
-![image](https://github.com/user-attachments/assets/4065dd95-30d9-43f4-a790-ff72adce9e33)
-
+---
+-- Paste Question 7 here
 
 ```sql
-DELETE FROM customer
-WHERE CUST_COUNTRY NOT IN ('India', 'USA');
+-- Paste your SQL code below for Question 7
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/f4560ca2-1fbc-476d-b647-33d71db7d372)
-
+![Output7](output.png)
 
 **Question 8**
-
-![image](https://github.com/user-attachments/assets/7f7a74a1-870f-4a1f-8b31-df3bc457e045)
-
+---
+-- Paste Question 8 here
 
 ```sql
-DELETE FROM customer
-WHERE GRADE >= 2;
+-- Paste your SQL code below for Question 8
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/1e0da64d-81c1-4493-aed7-9e30ea6eef28)
-
+![Output8](output.png)
 
 **Question 9**
-
-![image](https://github.com/user-attachments/assets/6582b276-3672-4426-b317-7549c9b32a9d)
-
+---
+-- Paste Question 9 here
 
 ```sql
-DELETE FROM Doctors
-WHERE specialization = 'Pediatrics'
-  AND first_name = 'Michael';
+-- Paste your SQL code below for Question 9
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/2d9ca326-978a-42e2-a707-7b52de0a1324)
+![Output9](output.png)
 
 **Question 10**
-
-![image](https://github.com/user-attachments/assets/5cdc5453-a0c6-4290-b442-dffb772c27e9)
-
+---
+-- Paste Question 10 here
 
 ```sql
-DELETE FROM customer
-WHERE AGENT_CODE IN ('A003', 'A008');
+-- Paste your SQL code below for Question 10
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/46f39bd1-21b8-4724-b47b-53099e272de6)
-
+![Output10](output.png)
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
