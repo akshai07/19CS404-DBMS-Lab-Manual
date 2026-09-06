@@ -29,11 +29,19 @@ END;
 
 ## 1. Write a PL/SQL program to find the Greatest of Two Numbers
 
-### Program:
-```
+### Steps:
+- Declare two numeric variables and initialize them.
+- Use an `IF` statement to compare the values.
+- Display the greater number using `DBMS_OUTPUT.PUT_LINE`.
+
+**Expected Output:**  
+Greater number is: 80
+
+## Code:
+```sql
 DECLARE
-    num1 NUMBER := 80;  -- First number
-    num2 NUMBER := 50;  -- Second number
+    num1 NUMBER := 80; 
+    num2 NUMBER := 28; 
 BEGIN
     IF num1 > num2 THEN
         DBMS_OUTPUT.PUT_LINE('Greater number is: ' || num1);
@@ -43,38 +51,14 @@ BEGIN
 END;
 ```
 
-### Steps:
-- Declare two numeric variables and initialize them.
-- Use an `IF` statement to compare the values.
-- Display the greater number using `DBMS_OUTPUT.PUT_LINE`.
+## Output :
+<img width="365" height="153" alt="7(1)" src="https://github.com/user-attachments/assets/c36efe78-6e15-4b51-a9bb-b68031d49724" />
 
-**Expected Output:**  
-Greater number is: 80
 
-### Output: 
 
-![image](https://github.com/user-attachments/assets/d8760b04-7cfb-4308-b274-fbcb5cb55354)
-
+---
 
 ## 2. Write a PL/SQL program to Calculate Sum of First N Natural Numbers
-
-### Program:
-```
-SET SERVEROUTPUT ON;
-
-DECLARE
-    n NUMBER := 10;       -- Number up to which sum is calculated
-    i NUMBER := 1;        -- Loop counter
-    total_sum NUMBER := 0; -- To store the sum
-BEGIN
-    WHILE i <= n LOOP
-        total_sum := total_sum + i;
-        i := i + 1;
-    END LOOP;
-
-    DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || total_sum);
-END;
-```
 
 ### Steps:
 - Declare a variable `n` and assign a value (e.g., 10).
@@ -85,23 +69,46 @@ END;
 **Expected Output:**  
 Sum of first 10 natural numbers is: 55
 
-### Output:
+Code :
+```sql
+DECLARE
+    n NUMBER := 10;      
+    i NUMBER := 1;       
+    total_sum NUMBER := 0; 
+BEGIN
+    WHILE i <= n LOOP
+        total_sum := total_sum + i;
+        i := i + 1;
+    END LOOP;
 
-![image](https://github.com/user-attachments/assets/2b4b7fa2-ace7-4ef0-a1ed-74b9ee6d8854)
+    DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || total_sum);
+END;
+```
+## Output :
+<img width="392" height="147" alt="7(2)" src="https://github.com/user-attachments/assets/e9d2cea5-ae2b-4fcf-b425-b0ba5db66223" />
 
+---
 
 ## 3. Write a PL/SQL program to generate Fibonacci series
 
-### Program:
-```
-SET SERVEROUTPUT ON;
+### Steps:
+- Declare the variable `n` to indicate how many terms to generate.
+- Initialize the first two Fibonacci numbers (0 and 1).
+- Use a loop to generate the next terms using the formula `c = a + b`.
+- Print each term in the series.
 
+**Expected Output:**  
+n = 7  
+Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
+
+## Code :
+```sql
 DECLARE
-    n NUMBER := 7;     -- Number of terms in the series
-    a NUMBER := 0;     -- First term
-    b NUMBER := 1;     -- Second term
-    c NUMBER;          -- Next term
-    i NUMBER := 3;     -- Counter starting from 3 since first two terms are already known
+    n NUMBER := 7; 
+    a NUMBER := 0;
+    b NUMBER := 1;
+    c NUMBER;
+    i NUMBER := 3;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('Fibonacci sequence:');
     DBMS_OUTPUT.PUT_LINE(a);
@@ -116,44 +123,15 @@ BEGIN
     END LOOP;
 END;
 ```
+## Output :
 
-### Steps:
-- Declare the variable `n` to indicate how many terms to generate.
-- Initialize the first two Fibonacci numbers (0 and 1).
-- Use a loop to generate the next terms using the formula `c = a + b`.
-- Print each term in the series.
+<img width="331" height="264" alt="7(3)" src="https://github.com/user-attachments/assets/88b3fe9f-8d0b-4cbd-8e00-51e83b72f16c" />
 
-**Expected Output:**  
-n = 7  
-Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 
-### Output:
 
-![image](https://github.com/user-attachments/assets/bb3a4da7-fb25-4616-8e45-c31255bb22a5)
-
+---
 
 ## 4. Write a PL/SQL Program to display the number in Reverse Order
-
-### Program:
-```
-SET SERVEROUTPUT ON;
-
-DECLARE
-    n NUMBER := 1535;       -- Original number
-    original NUMBER := 1535;-- To keep the original number for display
-    reversed NUMBER := 0;   -- To store the reversed number
-    digit NUMBER;           -- To extract each digit
-BEGIN
-    WHILE n > 0 LOOP
-        digit := MOD(n, 10);              -- Get the last digit
-        reversed := reversed * 10 + digit;-- Build the reversed number
-        n := TRUNC(n / 10);               -- Remove the last digit
-    END LOOP;
-
-    DBMS_OUTPUT.PUT_LINE('n = ' || original);
-    DBMS_OUTPUT.PUT_LINE('Reversed number is ' || reversed);
-END;
-```
 
 ### Steps:
 - Declare a variable `n` and assign a value (e.g., 1535).
@@ -164,17 +142,45 @@ END;
 n = 1535  
 Reversed number is 5351
 
-### Output:
+## Code :
+```sql
+DECLARE
+    n NUMBER := 1535;
+    original NUMBER := 1535;
+    reversed NUMBER := 0;
+    digit NUMBER;
+BEGIN
+    WHILE n > 0 LOOP
+        digit := MOD(n, 10);
+        reversed := reversed * 10 + digit;
+        n := TRUNC(n / 10);
+    END LOOP;
 
-![image](https://github.com/user-attachments/assets/fdad8535-0f89-44a3-893c-34184a3cca9f)
+    DBMS_OUTPUT.PUT_LINE('n = ' || original);
+    DBMS_OUTPUT.PUT_LINE('Reversed number is ' || reversed);
+END;
+```
 
+## Output :
+
+<img width="387" height="148" alt="7(4)" src="https://github.com/user-attachments/assets/1ba368bf-6d60-4054-9bfb-5cab7e3a87a5" />
+
+---
 
 ## 5. Write a PL/SQL program to find the largest of three numbers
 
-### Program:
-```
-SET SERVEROUTPUT ON;
+### Steps:
+- Declare three numeric variables `a`, `b`, and `c`.
+- Use nested `IF-ELSIF-ELSE` conditions to find the largest among the three.
+- Display the largest number.
 
+**Expected Output:**  
+a = 10, b = 9, c = 15  
+Largest of three number is 15
+
+
+## Code :
+```sql
 DECLARE
     a NUMBER := 10;
     b NUMBER := 9;
@@ -194,18 +200,10 @@ BEGIN
 END;
 ```
 
-### Steps:
-- Declare three numeric variables `a`, `b`, and `c`.
-- Use nested `IF-ELSIF-ELSE` conditions to find the largest among the three.
-- Display the largest number.
+## Output :
 
-**Expected Output:**  
-a = 10, b = 9, c = 15  
-Largest of three number is 15
+<img width="340" height="150" alt="7(5)" src="https://github.com/user-attachments/assets/c4e697a6-e2bd-4fb9-9b25-daf28a756540" />
 
-### Output:
-
-![image](https://github.com/user-attachments/assets/63e79618-7471-4a54-bce4-6416fca17d9a)
 
 
 ## RESULT
