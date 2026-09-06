@@ -77,13 +77,12 @@ END;
 - Implement exception handling to catch the relevant exceptions and display appropriate messages.
 
 #### Program:
-
-```sqlBEGIN
+```
 DECLARE
    CURSOR emp_cur IS
-      SELECT emp_name, designation FROM employees1;
-   v_name employees1.emp_name%TYPE;
-   v_desg employees1.designation%TYPE;
+      SELECT emp_name, designation FROM employees;
+   v_name employees.emp_name%TYPE;
+   v_desg employees.designation%TYPE;
 BEGIN
    OPEN emp_cur;
    LOOP
@@ -96,13 +95,13 @@ EXCEPTION
    WHEN OTHERS THEN
       DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
 END;
-/
 ```
 
 **Output:**  
 The program should display the employee details or an error message.
 
-![image](https://github.com/user-attachments/assets/c085f98d-5fdc-4e67-bd8d-6e4978dbfd6c)
+![image](https://github.com/user-attachments/assets/420e25ee-9a22-4def-945e-0494dee9aed2)
+
 
 ---
 
@@ -121,24 +120,15 @@ The program should display the employee details or an error message.
 - Implement exception handling to catch and display relevant error messages.
 
 #### Program:
-```sql
-ALTER TABLE employees1 ADD salary NUMBER;
-
-UPDATE employees1 SET salary = 75000 WHERE emp_id = 1; -- Alice
-UPDATE employees1 SET salary = 60000 WHERE emp_id = 2; -- Bob
-UPDATE employees1 SET salary = 35000 WHERE emp_id = 3; -- Charlie
-UPDATE employees1 SET salary = 82000 WHERE emp_id = 4; -- Diana
-
-COMMIT;
-
+```
 DECLARE
    CURSOR sal_cursor(min_sal NUMBER, max_sal NUMBER) IS
-      SELECT emp_name, salary FROM employees1 WHERE salary BETWEEN min_sal AND max_sal;
-   v_name employees1.emp_name%TYPE;
-   v_salary employees1.salary%TYPE;
+      SELECT emp_name, salary FROM employees WHERE salary BETWEEN min_sal AND max_sal;
+   v_name employees.emp_name%TYPE;
+   v_salary employees.salary%TYPE;
    found BOOLEAN := FALSE;
 BEGIN
-   FOR rec IN sal_cursor(40000, 80000) LOOP
+   FOR rec IN sal_cursor(45000, 70000) LOOP
       DBMS_OUTPUT.PUT_LINE('Name: ' || rec.emp_name || ', Salary: ' || rec.salary);
       found := TRUE;
    END LOOP;
@@ -151,13 +141,12 @@ EXCEPTION
    WHEN OTHERS THEN
       DBMS_OUTPUT.PUT_LINE('Unexpected error: ' || SQLERRM);
 END;
-/
 ```
 
 **Output:**  
 The program should display the employee details within the specified salary range or an error message if no data is found.
 
-![image](https://github.com/user-attachments/assets/46b0f00f-9016-4e41-ac66-238ca21bd62e)
+![image](https://github.com/user-attachments/assets/61f49c12-dcc3-4712-a366-e917595623f0)
 
 
 ---
@@ -177,22 +166,11 @@ The program should display the employee details within the specified salary rang
 - Implement exception handling to catch the relevant exceptions.
 
 #### Program:
-```sql
-SELECT table_name FROM user_tables WHERE table_name = 'EMPLOYEES1';
-
-ALTER TABLE employees1 ADD (dept_no NUMBER);
-
-UPDATE employees1 SET dept_no = 10 WHERE emp_id = 1;
-UPDATE employees1 SET dept_no = 20 WHERE emp_id = 2;
-UPDATE employees1 SET dept_no = 30 WHERE emp_id = 3;
-UPDATE employees1 SET dept_no = 40 WHERE emp_id = 4;
-
-COMMIT;
-
+```
 DECLARE
    found BOOLEAN := FALSE;
 BEGIN
-   FOR emp_rec IN (SELECT emp_name, dept_no FROM employees1) LOOP
+   FOR emp_rec IN (SELECT emp_name, dept_no FROM employees) LOOP
       DBMS_OUTPUT.PUT_LINE('Name: ' || emp_rec.emp_name || ', Dept No: ' || emp_rec.dept_no);
       found := TRUE;
    END LOOP;
@@ -205,14 +183,13 @@ EXCEPTION
    WHEN OTHERS THEN
       DBMS_OUTPUT.PUT_LINE('Unexpected error: ' || SQLERRM);
 END;
-/
-
 ```
 
 **Output:**  
 The program should display employee names with their department numbers or the appropriate error message if no data is found.
 
-![image](https://github.com/user-attachments/assets/c5ef1362-224d-4f56-b116-eb36e4706330)
+![image](https://github.com/user-attachments/assets/a208f8c1-0913-482c-a283-b586626e5140)
+
 
 ---
 
@@ -231,7 +208,7 @@ The program should display employee names with their department numbers or the a
 - Implement exception handling to catch the relevant exceptions and display appropriate messages.
 
 #### Program:
-```sql
+```
 DECLARE
    CURSOR emp_cur IS SELECT * FROM employees;
    emp_rec employees%ROWTYPE;
@@ -260,7 +237,8 @@ END;
 **Output:**  
 The program should display employee records or the appropriate error message if no data is found.
 
-![image](https://github.com/user-attachments/assets/deaac781-298e-402d-b4fe-d41bc808e46e)
+![image](https://github.com/user-attachments/assets/65664ead-e13d-4ad4-a9df-4e2bae9c8012)
+
 
 ---
 
@@ -279,14 +257,14 @@ The program should display employee records or the appropriate error message if 
 - Implement exception handling to handle `NO_DATA_FOUND` or other errors that may occur.
 
 #### Program:
-```sql
+```
 DECLARE
    CURSOR emp_cur IS
-      SELECT emp_id, salary FROM employees1 WHERE dept_no = 10 FOR UPDATE;
+      SELECT emp_id, salary FROM employees WHERE dept_no = 10 FOR UPDATE;
    v_found BOOLEAN := FALSE;
 BEGIN
    FOR emp_rec IN emp_cur LOOP
-      UPDATE employees1 SET salary = emp_rec.salary + 1000 WHERE emp_id = emp_rec.emp_id;
+      UPDATE employees SET salary = emp_rec.salary + 1000 WHERE emp_id = emp_rec.emp_id;
       DBMS_OUTPUT.PUT_LINE('Updated salary for emp_id: ' || emp_rec.emp_id);
       v_found := TRUE;
    END LOOP;
@@ -300,16 +278,15 @@ EXCEPTION
    WHEN OTHERS THEN
       DBMS_OUTPUT.PUT_LINE('Error during update: ' || SQLERRM);
 END;
-/
 ```
 
 **Output:**  
 The program should update employee salaries and display a message, or it should display an error message if no data is found.
 
-![image](https://github.com/user-attachments/assets/148ab107-ab8b-4710-ae8e-865b85faa4a7)
+![image](https://github.com/user-attachments/assets/a3e41b43-317a-4ff1-ae8b-85f80a7ff8ad)
+
 
 ---
 
 ## RESULT
-Thus, the program successfully executed and displayed employee details using a cursor. 
-
+Thus, the program successfully executed and displayed employee details using a cursor.
