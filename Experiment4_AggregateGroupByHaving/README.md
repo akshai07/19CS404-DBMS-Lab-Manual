@@ -37,182 +37,217 @@ HAVING condition;
 ```
 
 **Question 1**
+--
+How many appointments are scheduled for each doctor?
 
-![image](https://github.com/user-attachments/assets/6d478a1e-f402-4d9b-b1b4-82acd1ca3b6a)
+Sample table:Appointments Table
 
 
 ```sql
-SELECT Diagnosis, COUNT(*) AS DiagnosisCount
-FROM MedicalRecords
-GROUP BY Diagnosis
-ORDER BY DiagnosisCount DESC
-LIMIT 1;
+select DoctorID, count(*) as TotalAppointments from Appointments Group by DoctorID;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/21e78e1e-a092-4e23-a4f1-df3f6255446b)
+<img width="1307" height="550" alt="image" src="https://github.com/user-attachments/assets/dcff31ef-c559-45ce-828e-d8cd2e8bea06" />
 
 
 **Question 2**
+---
+Write SQL query to extract the email domain from each patient's email address and count the number of patients with the same email domain.
 
-![image](https://github.com/user-attachments/assets/ead773fb-d4d6-4f4b-9c02-a9cb011f8e9b)
+Sample table: Patients Table
+
 
 
 ```sql
-SELECT 
-  Specialty,
-  Gender,
-  COUNT(*) AS TotalDoctors
-FROM Doctors
-GROUP BY Specialty, Gender
-ORDER BY Specialty, Gender;
+select 
+    substr(Email,instr(Email,'@')+1) as EmailDomain,
+    count(*) as TotalPatients
+from Patients
+group by EmailDomain;
 ```
 
 **Output:**
-
-![image](https://github.com/user-attachments/assets/0df250ba-82ff-4b1d-8010-0c289f6e6a6d)
+<img width="1307" height="332" alt="image" src="https://github.com/user-attachments/assets/5f3bd4d7-21e5-464e-9578-39fe97e9e073" />
 
 **Question 3**
+---
+Write a SQL query to calculate total purchase amount of all orders. Return total purchase amount.
 
-![image](https://github.com/user-attachments/assets/f37d5384-c40e-4888-be9d-067a2dfd521f)
+Sample table: orders
+
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
+
 
 
 ```sql
-SELECT 
-  Address,
-  COUNT(*) AS TotalPatients
-FROM Patients
-GROUP BY Address
-ORDER BY Address;
+select sum(purch_amt) as TOTAL from orders;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/a780c5d8-c7e8-4f6e-a618-4f9842285403)
+<img width="1310" height="308" alt="image" src="https://github.com/user-attachments/assets/6412b5a7-6421-4897-80bd-f75251dd81cc" />
 
 
 **Question 4**
+---
+Write a SQL query to find the maximum purchase amount.
 
-![image](https://github.com/user-attachments/assets/99fbc0ee-4eab-4951-8329-b893fb6899d6)
+Sample table: orders
 
+ord_no      purch_amt   ord_date    customer_id  salesman_id
 
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
+
+ 
 
 ```sql
-SELECT 
-  SUM(purch_amt) AS TOTAL
-FROM orders;
+select max(purch_amt) as MAXIMUM from orders;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/42323470-da2a-480d-ada5-7696509c260c)
+<img width="1313" height="306" alt="image" src="https://github.com/user-attachments/assets/83f05ac5-33d1-4a68-b4e5-03d9a1c84495" />
 
 
 **Question 5**
+---
+Write a SQL query to calculate total available amount of fruits that has a price greater than 0.5 . Return total Count. 
 
-![image](https://github.com/user-attachments/assets/cf422229-bf29-4df5-a8ba-42c28e84fe93)
+Note: Inventory attribute contains amount of fruits
 
+Table: fruits
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+unit        TEXT
+inventory   INTEGER
+price       REAL
+ 
 
 ```sql
-SELECT 
-  COUNT(*) AS COUNT
-FROM employee
-WHERE age > 32;
+select sum(inventory) as total_available_amount 
+from fruits
+where price>0.5 ;
 ```
 
 **Output:**
-
-![image](https://github.com/user-attachments/assets/5f6bcb0e-eaa3-4c0d-98b8-c49faaeefc45)
+<img width="1318" height="306" alt="image" src="https://github.com/user-attachments/assets/93b083db-dd26-4050-9d17-fa73a98a86e1" />
 
 
 **Question 6**
+---
+Write a SQL query that counts the number of unique salespeople. Return number of salespeople.
 
-![image](https://github.com/user-attachments/assets/ddb513e9-d0dd-4ccc-a25a-2ca4b7aa5079)
+Sample table: orders
 
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
+
+ 
 
 ```sql
-SELECT 
-  COUNT(DISTINCT age) AS COUNT
-FROM employee;
+select count(distinct salesman_id) as COUNT from orders;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/a21d4163-6297-456f-9546-8b006ce9f684)
+<img width="1307" height="305" alt="image" src="https://github.com/user-attachments/assets/ce48f515-c366-4772-bc15-bb913b363240" />
+
 
 **Question 7**
+---
+Write the SQL query that accomplishes the grouping of data by age, calculates the average income for each age group, and includes only those age groups where the average income falls between 300,000 and 500,000.
 
-![image](https://github.com/user-attachments/assets/ff99991a-9ebf-46b3-99da-ad81d2fb0648)
-
+Sample table: employee
 
 ```sql
-SELECT 
-  COUNT(*) AS COUNT
-FROM customer
-WHERE city != 'Noida';
+select age, AVG(income)
+from employee
+group by age
+having AVG(income) between 300000 and 500000;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/ac49ab6c-2e9e-40a5-8688-04cca6a4495c)
+<img width="1313" height="337" alt="image" src="https://github.com/user-attachments/assets/bae7b798-ba2f-4e20-b29d-9774c16d210d" />
 
 
 **Question 8**
+---
+Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the total work hours for each date, and excludes dates where the total work hour sum is not greater than 40.
 
-![image](https://github.com/user-attachments/assets/59e5c8ba-5690-4600-9923-98e88c8c701a)
+Sample table: employee1
+
 
 
 ```sql
-SELECT 
-  address, 
-  SUM(salary)
-FROM customer1
-GROUP BY address
-HAVING SUM(salary) > 2000;
+SELECT jdate,SUM(workhour)
+from employee1
+group by jdate
+having SUM(workhour)>40;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/07c6142c-3c22-471f-bdcd-437e145239ac)
+<img width="1315" height="362" alt="image" src="https://github.com/user-attachments/assets/8bddb350-416a-434a-b3d6-257d1c251598" />
 
 
 **Question 9**
+---
+Write the SQL query that achieves the grouping of data by city, calculates the total income for each city, and includes only those cities where the total income sum is greater than 200,000.
 
-![image](https://github.com/user-attachments/assets/31ce49c3-a895-4667-92a6-163adf798228)
+Sample table: employee
+
 
 ```sql
-SELECT 
-  category_id, 
-  AVG(Price) 
-FROM products
-GROUP BY category_id
-HAVING AVG(price) BETWEEN 10 AND 15;
+SELECT city,SUM(income) as Income
+from employee
+group by city
+having SUM(income) > 200000;
 ```
 
 **Output:**
-
-![image](https://github.com/user-attachments/assets/5515b5eb-9b08-4a5b-bae1-eac3e29bc439)
+<img width="1321" height="471" alt="image" src="https://github.com/user-attachments/assets/7d9ba0df-530f-4830-8a5e-c592a699e086" />
 
 
 **Question 10**
+---
+Write a SQL query to calculate total purchase amount of all orders. Return total purchase amount.
 
-![image](https://github.com/user-attachments/assets/b4b8da44-8deb-4c7b-8b8a-f8a763339bef)
-
+Sample table: orders
 
 ```sql
-SELECT 
-  age, 
-  AVG(income)
-FROM employee
-GROUP BY age
-HAVING AVG(income) BETWEEN 300000 AND 500000;
+select sum(purch_amt) as TOTAL from orders;
 ```
 
 **Output:**
 
-![image](https://github.com/user-attachments/assets/8689ff22-a9cd-4034-99a4-fbf98f2662aa)
-
+<img width="1310" height="308" alt="image" src="https://github.com/user-attachments/assets/6412b5a7-6421-4897-80bd-f75251dd81cc" />
 
 
 ## RESULT
