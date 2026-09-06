@@ -60,8 +60,8 @@ Key Differences:
 - Use `DBMS_OUTPUT.PUT_LINE` to display the result.
 - Call the procedure with a number as input.
 
-### Program:
-```sql
+Program:
+```
 CREATE OR REPLACE PROCEDURE find_square(p_number IN NUMBER) IS
     v_square NUMBER;
 BEGIN
@@ -81,8 +81,8 @@ END;
 **Expected Output:**  
 Square of 6 is 36
 
-### Output:
-![image](https://github.com/user-attachments/assets/2649b7d8-e315-44b6-81f2-5741db5d0072)
+## Output:
+<img width="832" height="157" alt="image" src="https://github.com/user-attachments/assets/af4c5c76-d51d-4337-86ae-3d5d80d8ce9b" />
 
 ---
 
@@ -94,12 +94,10 @@ Square of 6 is 36
 - Use a loop to calculate the factorial.
 - Return the result using the `RETURN` statement.
 - Call the function using a `SELECT` statement or in an anonymous block.
-
-### Program:
-```sql
+  
+Program:
+```
 SET SERVEROUTPUT ON;
-
-
 CREATE OR REPLACE FUNCTION get_factorial(p_number IN NUMBER)
 RETURN NUMBER
 IS
@@ -130,9 +128,8 @@ END;
 **Expected Output:**  
 Factorial of 5 is 120
 
-### Output:
-
-![image](https://github.com/user-attachments/assets/6da32c65-95b0-4e9b-95c0-a7aa9b35019f)
+## Output:
+<img width="817" height="167" alt="image" src="https://github.com/user-attachments/assets/d715a36a-1a3b-437f-bc2d-f1bfa18e3e52" />
 
 ---
 
@@ -143,12 +140,9 @@ Factorial of 5 is 120
 - Accept an input parameter.
 - Use the `MOD` function to check if the number is divisible by 2.
 - Display whether it is Even or Odd using `DBMS_OUTPUT.PUT_LINE`.
-
-### Program:
-```sql
+Program:
+```
 SET SERVEROUTPUT ON;
-
-
 CREATE OR REPLACE PROCEDURE check_even_odd(p_number IN NUMBER) IS
 BEGIN
   
@@ -169,9 +163,8 @@ END;
 **Expected Output:**  
 12 is Even
 
-### Output:
-
-![image](https://github.com/user-attachments/assets/8d6471fe-5cc5-4250-8ea1-36a56724e3d0)
+## Output:
+<img width="859" height="147" alt="image" src="https://github.com/user-attachments/assets/f6492c92-3e89-41b1-9823-11d9cf0e3418" />
 
 ---
 
@@ -183,9 +176,8 @@ END;
 - Use a loop to reverse the digits of the number.
 - Return the reversed number.
 - Call the function and display the output.
-
-### Program:
-```sql
+Program:
+```
 CREATE OR REPLACE FUNCTION reverse_number(p_number IN NUMBER)
 RETURN NUMBER IS
     v_number     NUMBER := p_number;
@@ -212,13 +204,13 @@ BEGIN
 END;
 /
 ```
+ 
 
 **Expected Output:**  
 Reversed number of 1234 is 4321
 
-### Output:
-
-![image](https://github.com/user-attachments/assets/7eaac8fe-d020-48c7-b82c-638a83691b34)
+## Output:
+<img width="828" height="166" alt="image" src="https://github.com/user-attachments/assets/56933ede-bae9-44d6-8706-e465f9d30083" />
 
 ---
 
@@ -229,9 +221,8 @@ Reversed number of 1234 is 4321
 - Accept an input number.
 - Use a loop from 1 to 10 to multiply the input number.
 - Display the multiplication results using `DBMS_OUTPUT.PUT_LINE`.
-
-### Program:
-```sql
+Program:
+```
 CREATE OR REPLACE PROCEDURE print_table(p_number IN NUMBER) IS
 BEGIN
     DBMS_OUTPUT.PUT_LINE('Multiplication table of ' || p_number || ':');
@@ -257,9 +248,8 @@ Multiplication table of 5:
 ...  
 5 x 10 = 50
 
-### Output:
-
-![image](https://github.com/user-attachments/assets/7555eb8e-f83e-4d6a-84ab-289f227a6c17)
+## Output:
+<img width="841" height="352" alt="image" src="https://github.com/user-attachments/assets/1a4583f8-765e-4ee7-b0a0-de098b067a36" />
 
 
 ## RESULT
